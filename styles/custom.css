@@ -1,0 +1,118 @@
+#authors img {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#authors .author-pic {
+  width: 300px;
+}
+
+#author p {
+  text-align: justify;
+}
+
+#subscribe {
+  background: linear-gradient(180deg,rgba(210,225,247,0) 2.56%,rgba(210,225,247,.442308) 67.15%,#d2e1f7);
+  padding-bottom: 70px;
+}
+
+#subscribe form {
+  display: flex;
+}
+
+#subscribe p {
+  text-align: center;
+}
+
+#subscribe #email {
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 720px) {
+  form {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+.author + .author {
+  margin-top: 80px;
+}
+body>nav {
+  margin-bottom: 40px;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 12px rgb(0 0 0 / 4%), 0 2px 4px rgb(0 0 0 / 8%);
+}
+
+.buy-btn {
+  color: white;
+  background: green;
+  padding: 20px;
+  border-radius: 7px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.author {
+  margin-bottom: 30px;
+}
+
+header {
+  margin-top: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+.mobile-menu {
+  display: none;
+}
+
+.display-on-mobile {
+  display: none;
+}
+
+@media screen and (max-width:576px) {
+  .mobile-menu {
+    display: block;
+    text-align: center;
+    position: fixed;
+    margin-top: 58px;
+    background: white;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .display-on-mobile {
+    display: block;
+  }
+
+  .mobile-title {
+    width: 90%;
+  }
+
+}
+
+
+.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
