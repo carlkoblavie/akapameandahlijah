@@ -94,6 +94,10 @@ header {
     padding-bottom: 10px;
   }
 
+  .show-on-mobile {
+    display: block;
+  }
+
   .hide-on-mobile {
     display: none;
   }
