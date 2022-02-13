@@ -5,6 +5,15 @@
   width: 100%;
 }
 
+@media screen and (max-width: 576px) {
+  #authors img {
+    float: none;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+
 #authors .author-pic {
   width: 300px;
 }
@@ -34,6 +43,12 @@
   form {
     width: 50%;
     margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #subscribe form {
+    display: block;
   }
 }
 
@@ -119,4 +134,23 @@ header {
 
 .hidden {
   display: none;
+}
+
+#chapters ul li {
+  list-style: none;
+}
+
+.review_person {
+    font-weight: 700;
+    font-size: large;
+    margin-top: 5px;
+}
+
+.review_person_title {
+    font-style: italic;
+    font-size: large;
+}
+
+.review {
+  margin-bottom: 30px;
 }
