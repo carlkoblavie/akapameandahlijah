@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
         headers: new Headers({ 'Content-Type': 'application/json; charset=UTF-8' })
       }
 
-      const url = 'www.commerciallawinghana.com/.netlify/functions/send'
+      const url = window.location.origin + '/.netlify/functions/send'
       fetch(url, fetchData)
         .then((response) => {
           console.log('status', response.status)
