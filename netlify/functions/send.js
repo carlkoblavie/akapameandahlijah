@@ -18,9 +18,9 @@ exports.handler = function(event, context, callback) {
     const html = `<html><body>
       From:
       <p>
-      First name: ${firstName}
-      Last name: ${lastName}
-      Email: ${email}
+      <div>First name: ${firstName}</div>
+      <div>Last name: ${lastName}</div>
+      <div>Email: ${email}</div>
       </p>
       <hr/>
       Message:
