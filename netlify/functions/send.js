@@ -11,11 +11,11 @@ let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi()
 let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail()
 exports.handler = function(event, context, callback) {
   try {
-    body = JSON.parse(event.body)
+    const body = JSON.parse(event.body)
 
     const { firstName, lastName, email, message } = body
     const name = firstName + ' ' + lastName
-    const body = `<html><body>
+    const html = `<html><body>
       From:
       <p>
       First name: ${firstName}
@@ -30,7 +30,7 @@ exports.handler = function(event, context, callback) {
       </body></html>`
 
     sendSmtpEmail.subject = "Contact Us Message From Book Website"
-    sendSmtpEmail.htmlContent = body
+    sendSmtpEmail.htmlContent = html
     sendSmtpEmail.sender = { "name": name, "email": email }
     sendSmtpEmail.to = [{ "email": RECEPIENT, "name": "Akapame & Ahlijah" }]
     sendSmtpEmail.replyTo = { "email": email, "name": name }
