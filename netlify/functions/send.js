@@ -35,7 +35,7 @@ exports.handler = function(event, context, callback) {
     sendSmtpEmail.to = [{ "email": RECEPIENT, "name": "Akapame & Ahlijah" }]
     sendSmtpEmail.replyTo = { "email": email, "name": name }
 
-    apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
+    return apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
       console.log('API called successfully. Returned data: ' + JSON.stringify(data))
     }, function(error) {
       console.error(error)
