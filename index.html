@@ -183,15 +183,27 @@ mixpanel.init('94f7149bdc796b646274756e5365fb87', {debug: true});
 <h4>Contact Us</h4>
 <div class="contact-us-form">
 <form action="" method="POST" id="contact-us">
-  <label for="firstname">First Name<input id="firstname" placeholder="First Name" type="text" required></label>
-    <span id="firstname_error" class="error">Please enter a valid first name</span>
-    <label for="lastname">Last Name<input type="text" placeholder="Last Name" required></label>
-    <span id="lastname_error" class="error">Please enter a valid last name</span>
-    <label for="email">Email<input type="email" placeholder="Email Address" required></label>
-    <span id="email_error" class="error">Please enter a valid email address</span>
-    <label for="message">Message<textarea id="message" name="message" rows="4"></textarea></label>
-    <small>We'll never share your email with anyone else.</small>
-    <button id="submit" type="submit">Submit</button>
+  <div class="success">Message submitted successfully. Thank you.</div>
+  <label for="firstname">
+    First Name
+    <div id="firstname_error" class="error">Please enter a valid first name</div>
+    <input id="firstname" placeholder="First Name" type="text" required>
+  </label>
+  <label for="lastname">
+    Last Name
+    <div id="lastname_error" class="error">Please enter a valid last name</div>
+    <input type="text" id="lastname" placeholder="Last Name" required>
+  </label>
+  <label for="email">
+    Email
+  <div id="sender_email_error" class="error">Please enter a valid email address</div>
+    <input type="email" id="sender_email" placeholder="Email Address" required></label>
+  <label for="message">
+    Message
+  <div id="message_error" class="error">Please enter your message</div>
+    <textarea id="message" name="message" rows="4"></textarea></label>
+  <small>We'll never share your email with anyone else.</small>
+  <button id="submit" type="submit">Submit</button>
 </form>
 <div>
   <div>

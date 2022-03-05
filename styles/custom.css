@@ -157,3 +157,23 @@ header {
 .review span {
   font-style: italic;
 }
+
+.error {
+  color: red;
+  display: none;
+}
+
+.error.show {
+  display: block
+}
+
+.success {
+  color: green;
+  text-align: center;
+  padding-bottom: 20px;
+  display: none;
+}
+
+.success.show {
+  display: block;
+}
