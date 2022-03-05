@@ -141,16 +141,19 @@ header {
 }
 
 .review_person {
-    font-weight: 700;
-    font-size: large;
-    margin-top: 5px;
+   font-weight: 700;
+   font-size: large;
+   margin-top: 5px;
 }
 
 .review_person_title {
-    font-style: italic;
-    font-size: large;
+  font-size: medium;
 }
 
-.review {
+.review{
   margin-bottom: 30px;
+}
+
+.review span {
+  font-style: italic;
 }

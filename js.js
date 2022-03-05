@@ -18,9 +18,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const mobileMenuItems = [].slice.call(document.querySelectorAll('aside.mobile-menu li'))
 
-    mobileMenuItems.forEach(item => {
-      item.addEventListener('click', () => {
-         mobileMenu.className = 'mobile-menu hidden'
-      })
+  mobileMenuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileMenu.className = 'mobile-menu hidden'
     })
+  })
+
+  const contactUsForm = document.getElementById('contact-us')
+
+  contactUsForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const formSubmissionEnpoint = 'https://commerciallawinghana.netlify.app/.netlify/functions/send'
+
+    fetch(formSubmissionEnpoint, { method: 'post' })
+      .then(() => {
+        console.log('done')
+      })
+  })
 })
