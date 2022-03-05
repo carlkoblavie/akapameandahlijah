@@ -54,10 +54,8 @@ window.addEventListener('DOMContentLoaded', () => {
       const url = 'https://commerciallawinghana.netlify.app/.netlify/functions/send'
       fetch(url, fetchData)
         .then((response) => {
-          if (response.status === '200') {
-            showSuccessMessage()
-            resetForm()
-          }
+          showSuccessMessage()
+          resetForm()
         })
         .catch(e => console.log(e))
     }

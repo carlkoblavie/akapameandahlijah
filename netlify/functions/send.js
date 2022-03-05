@@ -1,7 +1,7 @@
 const SibApiV3Sdk = require('sib-api-v3-sdk')
 let defaultClient = SibApiV3Sdk.ApiClient.instance
 
-const { SENDIN_BLUE_KEY } = process.env
+const { SENDIN_BLUE_KEY, RECEPIENT } = process.env
 
 let apiKey = defaultClient.authentications['api-key']
 apiKey.apiKey = SENDIN_BLUE_KEY
@@ -13,13 +13,27 @@ exports.handler = function(event, context, callback) {
   try {
     body = JSON.parse(event.body)
 
+    const { firstName, lastName, email, message } = body
+    const name = firstName + ' ' + lastName
+    const body = `<html><body>
+      From:
+      <p>
+      First name: ${firstName}
+      Last name: ${lastName}
+      Email: ${email}
+      </p>
+      <hr/>
+      Message:
+      </p>
+      ${message}
+      </p>
+      </body></html>`
+
     sendSmtpEmail.subject = "Contact Us Message From Book Website"
-    sendSmtpEmail.htmlContent = "<html><body><h1>testing mic</h1></body></html>"
-    sendSmtpEmail.sender = { "name": "John Doe", "email": "example@example.com" }
-    sendSmtpEmail.to = [{ "email": "cskoblavie@gmail.com", "name": "Akapame & Ahlijah" }]
-    sendSmtpEmail.replyTo = { "email": "replyto@domain.com", "name": "John Doe" }
-    sendSmtpEmail.headers = { "Some-Custom-Name": "unique-id-1234" }
-    sendSmtpEmail.params = { "parameter": "My param value", "subject": "New Subject" }
+    sendSmtpEmail.htmlContent = body
+    sendSmtpEmail.sender = { "name": name, "email": email }
+    sendSmtpEmail.to = [{ "email": RECEPIENT, "name": "Akapame & Ahlijah" }]
+    sendSmtpEmail.replyTo = { "email": email, "name": name }
 
     apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
       console.log('API called successfully. Returned data: ' + JSON.stringify(data))
