@@ -1,12 +1,10 @@
 window.addEventListener('DOMContentLoaded', () => {
-  console.log('dom loaded')
-
+  // handle mobile hamburger menu
   const hamburgerIcon = document.getElementById('hamburger')
   const mobileMenu = document.querySelector('.mobile-menu')
 
   if (!hamburgerIcon || !mobileMenu) {
     console.log('missing mobile menu')
-    return
   }
 
   hamburgerIcon.addEventListener('click', () => {
@@ -24,6 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
   })
 
+  // handle contact us form
   const contactUsForm = document.getElementById('contact-us')
 
   contactUsForm.addEventListener('submit', (e) => {
@@ -55,16 +54,58 @@ window.addEventListener('DOMContentLoaded', () => {
       fetch(url, fetchData)
         .then((response) => {
           console.log('status', response.status)
-          showSuccessMessage()
+          showSuccessMessage('contact-us-success')
           resetForm()
+          mixpanel.track("contact us")
+        })
+        .catch(e => console.log(e))
+    }
+
+    // emit analytic events
+  })
+
+  // handle email subscribe form
+  const emailSubscribeForm = document.querySelector('#subscribe form')
+
+  emailSubscribeForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const email = getFormInputValue('email')
+    const isValidEmail = checkValidEmail(email)
+
+    if (!isValidEmail) showErrorMessage('email_error', 'please enter a valid email address')
+
+    if (isValidEmail) {
+      data = { email }
+
+      const fetchData = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({ 'Content-Type': 'application/json; charset=UTF-8' })
+      }
+
+      const url = window.location.origin + '/.netlify/functions/subscribe'
+
+      fetch(url, fetchData)
+        .then((response) => {
+          console.log('status', response.status)
+          showSuccessMessage('subscribe-success')
+          resetForm()
+
+          mixpanel.track("Sign Up")
+
         })
         .catch(e => console.log(e))
     }
   })
+
+
 })
 
+// form utils
+
 function resetForm() {
-  const inputs = ['firstname', 'lastname', 'sender_email', 'message']
+  const inputs = ['firstname', 'lastname', 'sender_email', 'message', 'email']
 
   inputs.forEach(input => {
     const el = document.getElementById(input)
@@ -74,8 +115,8 @@ function resetForm() {
 
 }
 
-function showSuccessMessage() {
-  const successMessage = document.getElementById('success-message')
+function showSuccessMessage(elementId) {
+  const successMessage = document.getElementById(elementId)
 
   successMessage.className = 'success show'
 }
@@ -110,3 +151,12 @@ function clearErrorMessages() {
 function checkValidEmail(email) {
   return /\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+/.test(email)
 }
+
+// tracking website links
+mixpanel.track_links("#buy a", "click buy link", { properties: "clicked on booknook.com" })
+
+mixpanel.track_links("#home .buy-btn", "click green buy now")
+
+mixpanel.track_links("#authors", "click on authors link", {
+  "referrer": document.referrer
+})

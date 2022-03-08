@@ -11,14 +11,8 @@
 for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
 MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
 
-// Enabling the debug mode flag is useful during implementation,
-// but it's recommended you remove it for production
-mixpanel.init('94f7149bdc796b646274756e5365fb87', {debug: true}); 
-/* mixpanel.track('Sign Up', {
-  // 'source': "Pat's affiliate site",
-  // 'Opted out of email': true,
-});*/
-
+mixpanel.init('94f7149bdc796b646274756e5365fb87', {debug: true})
+mixpanel.track('view event')
 </script>
 </head>
 <body>
@@ -80,6 +74,7 @@ mixpanel.init('94f7149bdc796b646274756e5365fb87', {debug: true});
  <section id="subscribe">
    <div class="container">
    <p>Subscribe to receive updates on upcoming events and activities</p>
+<div class="success" id="subscribe-success">You have been added to our mailing list. Thank you</div>
   <form action=""><input type="email" id="email" placeholder="Email Address" required><button>Keep me posted</button></form>
    </div>
  </section>
@@ -174,6 +169,9 @@ mixpanel.init('94f7149bdc796b646274756e5365fb87', {debug: true});
   <div class="container">
 <h4>Where To Buy</h4>
 <ul>
+  <li> 
+   Online at <a href="https://booknook.store/product/commercial-law-in-ghana-sourcebook" target="_blank">booknook.com</a>
+  </li>
   <li>GIMPA Law Faculty</li>
   <li>or Call 0245295521</li>
 </ul>
@@ -183,7 +181,7 @@ mixpanel.init('94f7149bdc796b646274756e5365fb87', {debug: true});
 <h4>Contact Us</h4>
 <div class="contact-us-form">
 <form action="" method="POST" id="contact-us">
-  <div class="success" id="success-message">Message submitted successfully. Thank you.</div>
+  <div class="success" id="contact-us-success">Message submitted successfully. Thank you.</div>
   <label for="firstname">
     First Name
     <div id="firstname_error" class="error">Please enter a valid first name</div>

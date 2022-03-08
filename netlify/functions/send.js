@@ -9,6 +9,7 @@ apiKey.apiKey = SENDIN_BLUE_KEY
 let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi()
 
 let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail()
+
 exports.handler = function(event, context, callback) {
   try {
     const body = JSON.parse(event.body)
@@ -35,11 +36,13 @@ exports.handler = function(event, context, callback) {
     sendSmtpEmail.to = [{ "email": RECEPIENT, "name": "Akapame & Ahlijah" }]
     sendSmtpEmail.replyTo = { "email": email, "name": name }
 
-    return apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data))
-    }, function(error) {
-      console.error(error)
-    })
+    return apiInstance
+      .sendTransacEmail(sendSmtpEmail)
+      .then(function(data) {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data))
+      }, function(error) {
+        console.error(error)
+      })
 
   }
   catch (e) {
