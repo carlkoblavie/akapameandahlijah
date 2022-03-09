@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!isValidEmail) showErrorMessage('email_error', 'please enter a valid email address')
 
     if (isValidEmail) {
-      data = { email }
+      const data = { email }
 
       const fetchData = {
         method: 'POST',
@@ -86,8 +86,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const url = window.location.origin + '/.netlify/functions/subscribe'
 
       fetch(url, fetchData)
-        .then((response) => {
-          console.log('status', response.status)
+        .then(() => {
           showSuccessMessage('subscribe-success')
           resetForm()
 
