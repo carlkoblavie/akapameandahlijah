@@ -18,7 +18,7 @@ exports.handler = function(event, context, callback) {
     createContact.listIds = [LIST_ID]
     createContact.email = email
 
-    apiInstance.createContact(createContact).then(function(data) {
+    return apiInstance.createContact(createContact).then(function(data) {
       console.log('API called successfully. Returned data: ' + JSON.stringify(data))
     }, function(error) {
       console.error(error)

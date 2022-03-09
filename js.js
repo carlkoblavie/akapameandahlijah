@@ -52,8 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       const url = window.location.origin + '/.netlify/functions/send'
       fetch(url, fetchData)
-        .then((response) => {
-          console.log('status', response.status)
+        .then(() => {
           showSuccessMessage('contact-us-success')
           resetForm()
           mixpanel.track("contact us")
