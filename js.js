@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const fetchData = {
         method: 'POST',
         body: JSON.stringify(data),
-        headers: new Headers({ 'Content-Type': 'application/json; charset=UTF-8' })
+        headers: { 'Content-Type': 'application/json' }
       }
 
       const url = window.location.origin + '/.netlify/functions/subscribe'

@@ -25,6 +25,6 @@ exports.handler = function(event, context, callback) {
     })
   }
   catch (e) {
-    callback(e.message, { statusCode: 400, body: `[ERROR] invalid JSON - ${e.message}` })
+    return callback(e.message, { statusCode: 400, body: `[ERROR] invalid JSON - ${e.message}` })
   }
 }
