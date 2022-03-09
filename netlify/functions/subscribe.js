@@ -1,7 +1,7 @@
 const { ContactsApi, CreateContact, ApiClient } = require('sib-api-v3-sdk')
 
-const { SENDIN_BLUE_KEY } = process.env
-const LIST_ID = 3
+const { SENDIN_BLUE_KEY, LIST_ID } = process.env
+
 const defaultClient = ApiClient.instance
 
 const auth = defaultClient.authentications['api-key']
@@ -15,11 +15,12 @@ exports.handler = function(event, context, callback) {
     const body = JSON.parse(event.body)
     const { email } = body
 
-    createContact.listIds = [Number(LIST_ID)]
+    createContact.listIds = [LIST_ID]
     createContact.email = email
+    createContact.lastname = 'Akapame'
 
     return apiInstance.createContact(createContact).then(function(data) {
-      return console.log('API called successfully. Returned data: ' + JSON.stringify({ data, email, LIST_ID }))
+      console.log('API called successfully. Returned data: ' + JSON.stringify({ data, email, LIST_ID }))
     }, function(error) {
       console.error(error)
     })
